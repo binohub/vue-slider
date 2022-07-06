@@ -35,7 +35,7 @@
                     <!-- ! next function on click -->
                     <div @click="functionNext" class="next"></div>
                     <!-- ! :class aggiungi come chiave ciò che vuoi aggiungere e dopo i : la condizione per far si che venga aggiunt* (una virgola se vuoi proseguire con altre classi e condizioni) -->
-                    <div class="thumb" v-for="(element, index) in slides" :class="{active : index === activeIndex} ">
+                    <div class="thumb" @click="functionChangeImgActiveTo(index)" v-for="(element, index) in slides" :class="{active : index === activeIndex} ">
                         <img :src="element.image" :alt="element.title"/>
                     </div>
                     <!-- <div class="thumb">

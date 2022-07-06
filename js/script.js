@@ -49,5 +49,8 @@ const app = new Vue({
                 this.activeIndex--;
             }
         },
+        functionChangeImgActiveTo: function(indexToBeChanged){
+            this.activeIndex = indexToBeChanged;
+        }
     },
 })
