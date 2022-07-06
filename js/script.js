@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#app',
     data: {
+        autoPlay: null,
         activeIndex: 0,
         slides: [
             {
@@ -51,6 +52,23 @@ const app = new Vue({
         },
         functionChangeImgActiveTo: function(indexToBeChanged){
             this.activeIndex = indexToBeChanged;
-        }
+        },
+        functionStartAutoplay: function(){
+            // ! la funzione anonima ci ha dato problemi, il this.function next riporta al window
+            // ? soluzioni? >= oppure creare una const che eredita il this precedente e usare tale const
+            const thisByMe = this;
+            this.autoPlay = setInterval(() => {
+                thisByMe.functionNext();
+            }, 1000);
+        },
+        functionStopAutoplay: function(){
+            clearInterval(this.autoPlay);
+            this.autoPlay = null;
+        },
+    },
+
+    created(){
+        // ! viene eseguito una volta solo dopo il reload
+        this.functionStartAutoplay()
     },
 })
