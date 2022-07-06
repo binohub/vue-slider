@@ -1,7 +1,7 @@
 const app = new Vue({
     el: '#app',
     data: {
-        index: 0,
+        activeIndex: 0,
         slides: [
             {
                 image: 'img/01.jpg',
@@ -29,21 +29,25 @@ const app = new Vue({
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
             }
         ],
-        
+
     },
     methods: {
 
-        functionNext: function(){
-            if(this.index === 4){
-                this.index = -1;
+        functionNext: function () {
+            console.log("next");
+            if (this.activeIndex === this.slides.length - 1){
+                this.activeIndex = 0;
+            }else{
+                this.activeIndex++;
             }
-            this.index ++;
         },
-        functionPrev: function(){
-            if(this.index === 0){
-                this.index = + 5;
+        functionPrev: function () {
+            console.log("prev");
+            if (this.activeIndex === 0){
+                this.activeIndex = this.slides.length - 1;
+            }else{
+                this.activeIndex--;
             }
-            this.index --;
         },
     },
 })
